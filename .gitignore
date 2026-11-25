@@ -1,0 +1,11 @@
+# Personal documents and conversions: never published
+/*.pdf
+/converted/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
