@@ -49,6 +49,28 @@ pdf2md paper.pdf --format json     # per-page JSON chunks
 
 The exit code is `0` on success, `1` if any file failed, and `2` for usage errors.
 
+## Use with Claude
+
+### MCP server (Claude desktop app)
+
+`pdf2md-mcp` is an MCP server that lets Claude read PDFs on your computer through pdf2md, instead of
+processing every page as an image. It provides three tools:
+
+| Tool | What it does |
+|---|---|
+| `read_pdf` | Converts a PDF (once; later calls are instant) and returns its Markdown, optionally only some pages |
+| `get_pdf_image` | Returns one image from a converted PDF, only when it is really needed |
+| `list_converted_pdfs` | Lists the PDFs already converted |
+
+Converted files are kept in a library folder (`--library DIR`, default `C:\PDF\converted`) and
+recognised by content, so a renamed or moved PDF is not converted twice.
+
+### Claude Code skill
+
+[`claude-skill/pdf-to-markdown/SKILL.md`](claude-skill/pdf-to-markdown/SKILL.md) tells Claude Code to
+convert a PDF with pdf2md and read the Markdown instead of opening the PDF directly. Copy the
+`pdf-to-markdown` folder into `~/.claude/skills/` and adjust the paths to where you installed pdf2md.
+
 ## Example output
 
 ```markdown
